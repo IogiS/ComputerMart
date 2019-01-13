@@ -1,0 +1,15 @@
+c:\users\manik\documents\visual studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.Properties.Resources.resources
+c:\users\manik\documents\visual studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.csproj.GenerateResource.Cache
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\LCW1.exe.config
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\LCW1.exe
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\LCW1.pdb
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\EntityFramework.dll
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\EntityFramework.xml
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.exe
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.pdb
+C:\Users\manik\Documents\Visual Studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.csprojResolveAssemblyReference.cache
+C:\Users\manik\documents\visual studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.Main.resources
+C:\Users\manik\documents\visual studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.addCompon.resources
+C:\Users\manik\documents\visual studio 2017\Projects\LCW1\LCW1\obj\Debug\LCW1.buildCmp.resources

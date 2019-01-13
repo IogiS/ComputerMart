@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LCWModelContainer" CdmEntityContainer="LCWEntities">
+    <EntitySetMapping Name="ASSEMBLING">
+      <EntityTypeMapping TypeName="LCWModel.Assembling">
+        <MappingFragment StoreEntitySet="ASSEMBLING">
+          <ScalarProperty Name="AssemblingID" ColumnName="ID_ASSEMBLING" />
+          <ScalarProperty Name="GathererID" ColumnName="ID_GATHERER" />
+          <ScalarProperty Name="ComputerID" ColumnName="ID_COMPUTER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHARACTERISTIC">
+      <EntityTypeMapping TypeName="LCWModel.Characterisctic">
+        <MappingFragment StoreEntitySet="CHARACTERISTIC">
+          <ScalarProperty Name="CharacteriscticID" ColumnName="ID_CHARACTERISTIC" />
+          <ScalarProperty Name="CharacteriscticName" ColumnName="CHARA_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHARACTERISTIC_COMP">
+      <EntityTypeMapping TypeName="LCWModel.CharacteriscticComp">
+        <MappingFragment StoreEntitySet="CHARACTERISTIC_COMP">
+          <ScalarProperty Name="CharacteriscticCompID" ColumnName="ID_CHAR" />
+          <ScalarProperty Name="ComponentID" ColumnName="ID_COMPONENT" />
+          <ScalarProperty Name="CharacteriscticID" ColumnName="ID_CHARACTERISTIC" />
+          <ScalarProperty Name="CC_VALUE" ColumnName="CC_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENT">
+      <EntityTypeMapping TypeName="LCWModel.Client">
+        <MappingFragment StoreEntitySet="CLIENT">
+          <ScalarProperty Name="ClientID" ColumnName="ID_CLIENT" />
+          <ScalarProperty Name="ClientAddress" ColumnName="CLIENT_ADDRESS" />
+          <ScalarProperty Name="ClientSecondName" ColumnName="CLIENT_SECOND_NAME" />
+          <ScalarProperty Name="ClientPhoneNumber" ColumnName="CLIENT_PHONE_NUMBER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMP_COMPONENT">
+      <EntityTypeMapping TypeName="LCWModel.CompComponent">
+        <MappingFragment StoreEntitySet="COMP_COMPONENT">
+          <ScalarProperty Name="CompComponentID" ColumnName="ID_COMP_COMPONENT" />
+          <ScalarProperty Name="ComputerID" ColumnName="ID_COMPUTER" />
+          <ScalarProperty Name="ComponentID" ColumnName="ID_COMPONENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPONENT">
+      <EntityTypeMapping TypeName="LCWModel.Component">
+        <MappingFragment StoreEntitySet="COMPONENT">
+          <ScalarProperty Name="ComponentID" ColumnName="ID_COMPONENT" />
+          <ScalarProperty Name="Model" ColumnName="MODEL" />
+          <ScalarProperty Name="Company" ColumnName="COMPANY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPUTER">
+      <EntityTypeMapping TypeName="LCWModel.Computer">
+        <MappingFragment StoreEntitySet="COMPUTER">
+          <ScalarProperty Name="ComputerID" ColumnName="ID_COMPUTER" />
+          <ScalarProperty Name="NameComputer" ColumnName="NAME_COMPUTER" />
+          <ScalarProperty Name="TypeComputer" ColumnName="TYPE_COMPUTER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEE">
+      <EntityTypeMapping TypeName="LCWModel.Employee">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="EmployeeID" ColumnName="ID_EMPLOYEE" />
+          <ScalarProperty Name="PostEmployeeID" ColumnName="ID_POST_EMPLOYEE" />
+          <ScalarProperty Name="NameEmployee" ColumnName="NAME_EMPLOYEE" />
+          <ScalarProperty Name="SecondNameEmployee" ColumnName="SECOND_NAME_EMPLOYEE" />
+          <ScalarProperty Name="Patronymic" ColumnName="PATRONYMIC" />
+          <ScalarProperty Name="Birthday" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="AddressEmployee" ColumnName="ADDRESS_EMPLOYEE" />
+          <ScalarProperty Name="Passport" ColumnName="PASSPORT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REQUEST">
+      <EntityTypeMapping TypeName="LCWModel.Request">
+        <MappingFragment StoreEntitySet="REQUEST">
+          <ScalarProperty Name="RequestID" ColumnName="REQUEST_ID" />
+          <ScalarProperty Name="ComputerID" ColumnName="ID_COMPUTER" />
+          <ScalarProperty Name="ClientID" ColumnName="ID_CLIENT" />
+          <ScalarProperty Name="RequestDate" ColumnName="REQUEST_DATE" />
+          <ScalarProperty Name="RequestAmmount" ColumnName="REQUEST_AMMOUNT" />
+          <ScalarProperty Name="ExecutionDate" ColumnName="EXECUTION_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALE">
+      <EntityTypeMapping TypeName="LCWModel.Sale">
+        <MappingFragment StoreEntitySet="SALE">
+          <ScalarProperty Name="SaleID" ColumnName="SALE_ID" />
+          <ScalarProperty Name="ComputerID" ColumnName="ID_COMPUTER" />
+          <ScalarProperty Name="RequestID" ColumnName="REQUEST_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TESTING">
+      <EntityTypeMapping TypeName="LCWModel.Testing">
+        <MappingFragment StoreEntitySet="TESTING">
+          <ScalarProperty Name="TestingID" ColumnName="ID_TESTING" />
+          <ScalarProperty Name="ComputerID" ColumnName="ID_COMPUTER" />
+          <ScalarProperty Name="TesterID" ColumnName="ID_TESTER" />
+          <ScalarProperty Name="TestingDate" ColumnName="TESTING_DATE" />
+          <ScalarProperty Name="TestingResult" ColumnName="TESTING_RESULT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPE_EMPLOYEE">
+      <EntityTypeMapping TypeName="LCWModel.TypeEmployee">
+        <MappingFragment StoreEntitySet="TYPE_EMPLOYEE">
+          <ScalarProperty Name="PostEmployeeID" ColumnName="ID_POST_EMPLOYEE" />
+          <ScalarProperty Name="PostEmployee" ColumnName="POST_EMPLOYEE" />
+          <ScalarProperty Name="Salary" ColumnName="SALARY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

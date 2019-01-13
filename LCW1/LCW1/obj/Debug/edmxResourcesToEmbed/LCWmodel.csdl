@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LCWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Assembling">
+    <Key>
+      <PropertyRef Name="AssemblingID" />
+    </Key>
+    <Property Name="AssemblingID" Type="Int32" Nullable="false" />
+    <Property Name="GathererID" Type="Int32" Nullable="false" />
+    <Property Name="ComputerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK__ASSEMBLIN__ID_CO__5BE2A6F2" FromRole="ASSEMBLING" ToRole="COMPUTER" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__ASSEMBLIN__ID_GA__75A278F5" FromRole="ASSEMBLING" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="Characterisctic">
+    <Key>
+      <PropertyRef Name="CharacteriscticID" />
+    </Key>
+    <Property Name="CharacteriscticID" Type="Int32" Nullable="false" />
+    <Property Name="CharacteriscticName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CharacteriscticComp" Relationship="Self.FK__CHARACTER__ID_CH__74AE54BC" FromRole="CHARACTERISTIC" ToRole="CHARACTERISTIC_COMP" />
+  </EntityType>
+  <EntityType Name="CharacteriscticComp">
+    <Key>
+      <PropertyRef Name="CharacteriscticCompID" />
+    </Key>
+    <Property Name="CharacteriscticCompID" Type="Int32" Nullable="false" />
+    <Property Name="ComponentID" Type="Int32" Nullable="false" />
+    <Property Name="CharacteriscticID" Type="Int32" Nullable="false" />
+    <Property Name="CC_VALUE" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Characterisctic" Relationship="Self.FK__CHARACTER__ID_CH__74AE54BC" FromRole="CHARACTERISTIC_COMP" ToRole="CHARACTERISTIC" />
+    <NavigationProperty Name="Component" Relationship="Self.FK__CHARACTER__ID_CO__66603565" FromRole="CHARACTERISTIC_COMP" ToRole="COMPONENT" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="ClientAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientSecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientPhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Request" Relationship="Self.FK__REQUEST__ID_CLIE__5441852A" FromRole="CLIENT" ToRole="REQUEST" />
+  </EntityType>
+  <EntityType Name="CompComponent">
+    <Key>
+      <PropertyRef Name="CompComponentID" />
+    </Key>
+    <Property Name="CompComponentID" Type="Int32" Nullable="false" />
+    <Property Name="ComputerID" Type="Int32" Nullable="false" />
+    <Property Name="ComponentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK__COMP_COMP__ID_CO__60A75C0F" FromRole="COMP_COMPONENT" ToRole="COMPUTER" />
+    <NavigationProperty Name="Component" Relationship="Self.FK__COMP_COMP__ID_CO__619B8048" FromRole="COMP_COMPONENT" ToRole="COMPONENT" />
+  </EntityType>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="ComponentID" />
+    </Key>
+    <Property Name="ComponentID" Type="Int32" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Company" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CharacteriscticComp" Relationship="Self.FK__CHARACTER__ID_CO__66603565" FromRole="COMPONENT" ToRole="CHARACTERISTIC_COMP" />
+    <NavigationProperty Name="CompComponents" Relationship="Self.FK__COMP_COMP__ID_CO__619B8048" FromRole="COMPONENT" ToRole="COMP_COMPONENT" />
+  </EntityType>
+  <EntityType Name="Computer">
+    <Key>
+      <PropertyRef Name="ComputerID" />
+    </Key>
+    <Property Name="ComputerID" Type="Int32" Nullable="false" />
+    <Property Name="NameComputer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeComputer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Assembling" Relationship="Self.FK__ASSEMBLIN__ID_CO__5BE2A6F2" FromRole="COMPUTER" ToRole="ASSEMBLING" />
+    <NavigationProperty Name="CompComponent" Relationship="Self.FK__COMP_COMP__ID_CO__60A75C0F" FromRole="COMPUTER" ToRole="COMP_COMPONENT" />
+    <NavigationProperty Name="Request" Relationship="Self.FK__REQUEST__ID_COMP__534D60F1" FromRole="COMPUTER" ToRole="REQUEST" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__SALE__ID_COMPUTE__4BAC3F29" FromRole="COMPUTER" ToRole="SALE" />
+    <NavigationProperty Name="Testing" Relationship="Self.FK__TESTING__ID_COMP__4E88ABD4" FromRole="COMPUTER" ToRole="TESTING" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="PostEmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="NameEmployee" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="SecondNameEmployee" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AddressEmployee" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passport" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Assembling" Relationship="Self.FK__ASSEMBLIN__ID_GA__75A278F5" FromRole="EMPLOYEE" ToRole="ASSEMBLING" />
+    <NavigationProperty Name="TypeEmployee" Relationship="Self.FK__EMPLOYEE__ID_POS__59063A47" FromRole="EMPLOYEE" ToRole="TYPE_EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" />
+    <Property Name="ComputerID" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RequestAmmount" Type="Int32" />
+    <Property Name="ExecutionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__REQUEST__ID_CLIE__5441852A" FromRole="REQUEST" ToRole="CLIENT" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK__REQUEST__ID_COMP__534D60F1" FromRole="REQUEST" ToRole="COMPUTER" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="SaleID" />
+    </Key>
+    <Property Name="SaleID" Type="Int32" Nullable="false" />
+    <Property Name="ComputerID" Type="Int32" Nullable="false" />
+    <Property Name="RequestID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK__SALE__ID_COMPUTE__4BAC3F29" FromRole="SALE" ToRole="COMPUTER" />
+  </EntityType>
+  <EntityType Name="Testing">
+    <Key>
+      <PropertyRef Name="TestingID" />
+    </Key>
+    <Property Name="TestingID" Type="Int32" Nullable="false" />
+    <Property Name="ComputerID" Type="Int32" Nullable="false" />
+    <Property Name="TesterID" Type="Int32" Nullable="false" />
+    <Property Name="TestingDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TestingResult" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK__TESTING__ID_COMP__4E88ABD4" FromRole="TESTING" ToRole="COMPUTER" />
+  </EntityType>
+  <EntityType Name="TypeEmployee">
+    <Key>
+      <PropertyRef Name="PostEmployeeID" />
+    </Key>
+    <Property Name="PostEmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="PostEmployee" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__EMPLOYEE__ID_POS__59063A47" FromRole="TYPE_EMPLOYEE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <Association Name="FK__ASSEMBLIN__ID_CO__5BE2A6F2">
+    <End Role="COMPUTER" Type="LCWModel.Computer" Multiplicity="1" />
+    <End Role="ASSEMBLING" Type="LCWModel.Assembling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPUTER">
+        <PropertyRef Name="ComputerID" />
+      </Principal>
+      <Dependent Role="ASSEMBLING">
+        <PropertyRef Name="ComputerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ASSEMBLIN__ID_GA__75A278F5">
+    <End Role="EMPLOYEE" Type="LCWModel.Employee" Multiplicity="1" />
+    <End Role="ASSEMBLING" Type="LCWModel.Assembling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="ASSEMBLING">
+        <PropertyRef Name="GathererID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ASSEMBLIN__ID_GA__76969D2E">
+    <End Role="EMPLOYEE" Type="LCWModel.Employee" Multiplicity="1" />
+    <End Role="ASSEMBLING" Type="LCWModel.Assembling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="ASSEMBLING">
+        <PropertyRef Name="GathererID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ASSEMBLIN__ID_GA__778AC167">
+    <End Role="EMPLOYEE" Type="LCWModel.Employee" Multiplicity="1" />
+    <End Role="ASSEMBLING" Type="LCWModel.Assembling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="ASSEMBLING">
+        <PropertyRef Name="GathererID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHARACTER__ID_CH__74AE54BC">
+    <End Role="CHARACTERISTIC" Type="LCWModel.Characterisctic" Multiplicity="1" />
+    <End Role="CHARACTERISTIC_COMP" Type="LCWModel.CharacteriscticComp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHARACTERISTIC">
+        <PropertyRef Name="CharacteriscticID" />
+      </Principal>
+      <Dependent Role="CHARACTERISTIC_COMP">
+        <PropertyRef Name="CharacteriscticID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHARACTER__ID_CO__66603565">
+    <End Role="COMPONENT" Type="LCWModel.Component" Multiplicity="1" />
+    <End Role="CHARACTERISTIC_COMP" Type="LCWModel.CharacteriscticComp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPONENT">
+        <PropertyRef Name="ComponentID" />
+      </Principal>
+      <Dependent Role="CHARACTERISTIC_COMP">
+        <PropertyRef Name="ComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REQUEST__ID_CLIE__5441852A">
+    <End Role="CLIENT" Type="LCWModel.Client" Multiplicity="1" />
+    <End Role="REQUEST" Type="LCWModel.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENT">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="REQUEST">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__COMP_COMP__ID_CO__60A75C0F">
+    <End Role="COMPUTER" Type="LCWModel.Computer" Multiplicity="1" />
+    <End Role="COMP_COMPONENT" Type="LCWModel.CompComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPUTER">
+        <PropertyRef Name="ComputerID" />
+      </Principal>
+      <Dependent Role="COMP_COMPONENT">
+        <PropertyRef Name="ComputerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__COMP_COMP__ID_CO__619B8048">
+    <End Role="COMPONENT" Type="LCWModel.Component" Multiplicity="1" />
+    <End Role="COMP_COMPONENT" Type="LCWModel.CompComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPONENT">
+        <PropertyRef Name="ComponentID" />
+      </Principal>
+      <Dependent Role="COMP_COMPONENT">
+        <PropertyRef Name="ComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REQUEST__ID_COMP__534D60F1">
+    <End Role="COMPUTER" Type="LCWModel.Computer" Multiplicity="1" />
+    <End Role="REQUEST" Type="LCWModel.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPUTER">
+        <PropertyRef Name="ComputerID" />
+      </Principal>
+      <Dependent Role="REQUEST">
+        <PropertyRef Name="ComputerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SALE__ID_COMPUTE__4BAC3F29">
+    <End Role="COMPUTER" Type="LCWModel.Computer" Multiplicity="1" />
+    <End Role="SALE" Type="LCWModel.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPUTER">
+        <PropertyRef Name="ComputerID" />
+      </Principal>
+      <Dependent Role="SALE">
+        <PropertyRef Name="ComputerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TESTING__ID_COMP__4E88ABD4">
+    <End Role="COMPUTER" Type="LCWModel.Computer" Multiplicity="1" />
+    <End Role="TESTING" Type="LCWModel.Testing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPUTER">
+        <PropertyRef Name="ComputerID" />
+      </Principal>
+      <Dependent Role="TESTING">
+        <PropertyRef Name="ComputerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EMPLOYEE__ID_POS__59063A47">
+    <End Role="TYPE_EMPLOYEE" Type="LCWModel.TypeEmployee" Multiplicity="1" />
+    <End Role="EMPLOYEE" Type="LCWModel.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE_EMPLOYEE">
+        <PropertyRef Name="PostEmployeeID" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="PostEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LCWEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ASSEMBLING" EntityType="LCWModel.Assembling" />
+    <EntitySet Name="CHARACTERISTIC" EntityType="LCWModel.Characterisctic" />
+    <EntitySet Name="CHARACTERISTIC_COMP" EntityType="LCWModel.CharacteriscticComp" />
+    <EntitySet Name="CLIENT" EntityType="LCWModel.Client" />
+    <EntitySet Name="COMP_COMPONENT" EntityType="LCWModel.CompComponent" />
+    <EntitySet Name="COMPONENT" EntityType="LCWModel.Component" />
+    <EntitySet Name="COMPUTER" EntityType="LCWModel.Computer" />
+    <EntitySet Name="EMPLOYEE" EntityType="LCWModel.Employee" />
+    <EntitySet Name="REQUEST" EntityType="LCWModel.Request" />
+    <EntitySet Name="SALE" EntityType="LCWModel.Sale" />
+    <EntitySet Name="TESTING" EntityType="LCWModel.Testing" />
+    <EntitySet Name="TYPE_EMPLOYEE" EntityType="LCWModel.TypeEmployee" />
+    <AssociationSet Name="FK__ASSEMBLIN__ID_CO__5BE2A6F2" Association="Self.FK__ASSEMBLIN__ID_CO__5BE2A6F2">
+      <End Role="COMPUTER" EntitySet="COMPUTER" />
+      <End Role="ASSEMBLING" EntitySet="ASSEMBLING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ASSEMBLIN__ID_GA__75A278F5" Association="Self.FK__ASSEMBLIN__ID_GA__75A278F5">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="ASSEMBLING" EntitySet="ASSEMBLING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ASSEMBLIN__ID_GA__76969D2E" Association="Self.FK__ASSEMBLIN__ID_GA__76969D2E">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="ASSEMBLING" EntitySet="ASSEMBLING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ASSEMBLIN__ID_GA__778AC167" Association="Self.FK__ASSEMBLIN__ID_GA__778AC167">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="ASSEMBLING" EntitySet="ASSEMBLING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHARACTER__ID_CH__74AE54BC" Association="Self.FK__CHARACTER__ID_CH__74AE54BC">
+      <End Role="CHARACTERISTIC" EntitySet="CHARACTERISTIC" />
+      <End Role="CHARACTERISTIC_COMP" EntitySet="CHARACTERISTIC_COMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHARACTER__ID_CO__66603565" Association="Self.FK__CHARACTER__ID_CO__66603565">
+      <End Role="COMPONENT" EntitySet="COMPONENT" />
+      <End Role="CHARACTERISTIC_COMP" EntitySet="CHARACTERISTIC_COMP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REQUEST__ID_CLIE__5441852A" Association="Self.FK__REQUEST__ID_CLIE__5441852A">
+      <End Role="CLIENT" EntitySet="CLIENT" />
+      <End Role="REQUEST" EntitySet="REQUEST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__COMP_COMP__ID_CO__60A75C0F" Association="Self.FK__COMP_COMP__ID_CO__60A75C0F">
+      <End Role="COMPUTER" EntitySet="COMPUTER" />
+      <End Role="COMP_COMPONENT" EntitySet="COMP_COMPONENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__COMP_COMP__ID_CO__619B8048" Association="Self.FK__COMP_COMP__ID_CO__619B8048">
+      <End Role="COMPONENT" EntitySet="COMPONENT" />
+      <End Role="COMP_COMPONENT" EntitySet="COMP_COMPONENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REQUEST__ID_COMP__534D60F1" Association="Self.FK__REQUEST__ID_COMP__534D60F1">
+      <End Role="COMPUTER" EntitySet="COMPUTER" />
+      <End Role="REQUEST" EntitySet="REQUEST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SALE__ID_COMPUTE__4BAC3F29" Association="Self.FK__SALE__ID_COMPUTE__4BAC3F29">
+      <End Role="COMPUTER" EntitySet="COMPUTER" />
+      <End Role="SALE" EntitySet="SALE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TESTING__ID_COMP__4E88ABD4" Association="Self.FK__TESTING__ID_COMP__4E88ABD4">
+      <End Role="COMPUTER" EntitySet="COMPUTER" />
+      <End Role="TESTING" EntitySet="TESTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EMPLOYEE__ID_POS__59063A47" Association="Self.FK__EMPLOYEE__ID_POS__59063A47">
+      <End Role="TYPE_EMPLOYEE" EntitySet="TYPE_EMPLOYEE" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
